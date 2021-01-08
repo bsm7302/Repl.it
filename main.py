@@ -142,10 +142,57 @@ a = "ABCDEF"
 print(a[2:4]) #슬라이싱, 인덱싱도 가능
 print(a[3]) 
  #변경 불가능
- 
+
 print("\n\n튜플 자료형")
 ###튜플자료형
 a = (1, 2, 3, 4, 5, 6, 7, 8, 9)
 print(a[3])
 print(a[1:4])
   #변경 불가능, 컴프리헨션 불가능 
+
+  
+print("\n\n사전자료형")
+###사전자료형
+data = dict()
+data["사과"] = "Apple"
+data['바나나'] = 'Banana'
+data["코코넛"] = 'Coconut'
+print(data)
+
+
+
+print(data.keys()) #키 데이터만 담은 리스트
+print(data.values()) 
+#값데이터만 담은 리스트
+list_keys = list(data.keys()) #완벽한 리스트 형으로 바꿈.
+print(list_keys)
+
+
+print("\n\n집합 자료형")
+###집합자료형
+#집합 자료형 초기화 방법1: 리스트형을 set()함수를 통해 집합자료형으로 변경.
+data = set([1,2,3,3,4,4,5,1,1])
+print(data)
+#방법2 : 애초에 집합자료형으로 생성
+data = {5,2,-3,3,4,4,5,1,1}
+print(data)
+  #중복되는 숫자는 하나로만 나옴, 자동 오름차순 (음수는 양수 다음부터 오름차순)
+
+#합집합, 교집합, 차집합
+a = set([i for i in range(1,6)])
+b = set([i for i in range(3,8)]) 
+print(a | b) #합집합
+print(a & b) #교집합
+print(a - b) #차집합
+
+data = {1,2,3}
+data.add(4) #새로운 원소 추가
+print(data)
+
+data.update([5,6]) #여러개 추가
+print(data)
+data.update([-1,-5])
+print(data)
+
+data.remove(-5) #특정 원소 삭제
+print(data)
