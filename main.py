@@ -119,3 +119,33 @@ print(result)
   #리스트컴프리헨션 사용
   # for i in a : 리스트 a의 원소를 순차적으로 탐색
   # if i not in remove_set : remove_set에 존재하지 않는 원소만 반환
+
+
+print("\n\n문자열")
+###문자열
+
+data = 'Hello World' #작은 따옴표 안에 큰따옴표도 가능
+print(data)
+
+data = "Don't you know \"Python?\"" #백슬래시(\)를 활용하여 따옴표를 더 넣는것 가능.
+print(data)
+
+#문자열 연산
+a = "Hello"
+b = "World"
+print(a + " " + b) # 더하기 연산을 하면 두 문자열이 이어짐.
+
+a = "String"
+print(a * 3) #곱하기 연산을 하면 그 수만큼 문자열이 반복됨.
+
+a = "ABCDEF"
+print(a[2:4]) #슬라이싱, 인덱싱도 가능
+print(a[3]) 
+ #변경 불가능
+ 
+print("\n\n튜플 자료형")
+###튜플자료형
+a = (1, 2, 3, 4, 5, 6, 7, 8, 9)
+print(a[3])
+print(a[1:4])
+  #변경 불가능, 컴프리헨션 불가능 
