@@ -238,6 +238,7 @@ data = sys.stdin.readline().rstrip() #input() 보다 빠른수행시간으로 �
 print(data)
 """
 
+""""
 #출력
 a=1
 b=2
@@ -249,3 +250,158 @@ answer = 7
 print("정답은 "+ str(answer) + "입니다.") 
   #문자열과 정수형을 더하기연산할수 없기 때문에 정수형을 문자열로 바꾸어 더하기연산후 출력.
 print(f"정답은 {answer}입니다.") #f-string으로도 출력가능 굳이 정수형을 문자열로 바꿀필요 없음.
+"""
+
+""""
+print("\n\n조건문")
+###조건문
+x=15
+if 0<x<= 10: #파이썬에서는 이중부등식도 and로 굳이 연결할 필요 없다.(다른언어는 따로따로 해줘야함)
+  print("x >= 10") #파이썬에서는 코드의 블록을 들여쓰기로 지정한다!(다른 언어는 중괄호로 쓰이던 것)
+elif x<=20: #파이썬에서는 else if 대신 elif로 쓴다.
+  pass #나중에 작성할 내용에 대해서 pass 로 컴파일 오류없이 지나갈 수 있다.
+else: print("졸아버렸넹..") #한줄에 작성도 가능하다.
+
+score = 85
+result = "Success" if score >= 80 else "Fail" #조건부 표현식 이용. 마치 영어문장순과 비슷하다.
+print(result)
+
+a = [i for i in range(1,5)]+[5,5]
+remove_set = {3,5}
+result = [i for i in a if i not in remove_set]
+print(result)
+"""
+""""
+print("\n\n반복문")
+###반복문
+#솔직히 다른 언어랑 별반 다른것이 없다.
+score = [90,85,77,65,97]
+cheating_list = {2,4}
+
+for i in range(5):
+  if i+1 in cheating_list:
+    continue
+  if score[i]>=80:
+    print(f"{i+1}번 학생은 합격입니다.")
+
+"""
+
+"""
+print("\n\n함수")
+###함수
+#함수도 역시 별건 없다.
+#매개함수를 지정해서 입력할수 있음 -> 머신러닝 공부할때 파라미터 값 바꾸는걸 생각해보자.
+#전역변수, 지역변수 개념 리마인드
+
+a = 0
+
+def func():
+  global a #전역변수 a를 갖고온다. 만약 이 문장이 없으면 함수 내에서는 a가 선언되지 않았어서 a를 조작하는 다음 문장이 오류가난다.
+  a+=1
+
+for i in range(10):
+  func()
+print (a)
+
+
+#함수에서 array 사용 주의 (전역변수, 지역변수)
+array = [1,2,3,4,5]
+def func():
+  array.append(6) #리스트에 있어서 전역변수를 가져오는 것은 오류없이 정상작동 (전역변수 array를 가져온다.)
+  print(array) #전역변수 array 출력
+func()
+print(array)
+
+array = [1,2,3,4,5]
+def func():
+  array = [3,4,5] #지역변수 array 생성
+  array.append(6) #지역변수 array에 대해 append 실행됨.
+  print(array) #지역변수 array 출력
+func()
+print(array) #전역변수 array 출력
+
+array = [1,2,3,4,5]
+def func():
+  global array # 전역변수 array를 가져옴.
+  array = [3,4,5] #전역변수 array를 변경
+  array.append(6) #전역변수 array에 대해 append 실행됨.
+  print(array) #전역변수 array 출력
+func()
+print(array) #전역변수 array 출력
+
+
+#파이썬에서는 여러개의 반환값을 가질 수 있다. (packing-unpacking)
+def operator(a,b):
+  add_var = a+b
+  subtract_var = a-b
+  multiply_var = a*b
+  divide_var = a/b
+  return add_var, subtract_var, multiply_var, divide_var #packing
+
+a,b,c,d = operator(7,3) #unpacking
+print(a,b,c,d)
+
+
+#람다표현식
+array = [('홍길동',50),('이순신',32),('아무개',74)]
+
+def my_key(x): return x[1]
+print(sorted(array, key=my_key)) #나이순으로 정렬 : 일반적인 구문
+
+print(sorted(array, key=lambda x:x[1])) #람다표현식 사용
+  #lambda 매개변수 : 리턴 
+
+
+list1 = [1,2,3,4,5]
+list2 = [i for i in range(6,11)]
+result = map((lambda a,b:a+b),list1, list2) #list1,list2에 대해 lambda함수변환을 시킨다. map형으로 리턴. 구분을 위해 lambda에 소괄호침.
+  #map(변환함수, 순회가능한 데이터)
+
+print(list(result))
+"""
+
+
+print("\n\n주요라이브러리")
+###주요라이브러리
+#내장함수
+result = eval("(3+5)*7") #문자열형태의 숫자 식 결과를 숫자로 반환해줌.
+print(result)
+
+#itertools
+from itertools import permutations
+data = ['A','B','C']
+result = list(permutations(data,3)) #순서를 고려하여 data 3개를 고르는 경우의수
+print(result)
+
+from itertools import combinations
+result = list(combinations(data,2))
+print(result)
+
+from itertools import product
+result = list(product(data,repeat=3)) #중복을 허용하는 permutations
+print(result)
+
+from itertools import combinations_with_replacement
+result = list(combinations_with_replacement(data,2)) #중복을 허용하는 combinations
+print(result)
+
+
+#collections
+
+from collections import Counter
+counter = Counter(['red','blue','green','blue','blue'])
+print(counter['blue'])
+print(counter['green'])
+print(dict(counter)) #사전자료형으로 변환
+
+
+#math
+import math
+
+def lcm(a,b): #최소공배수(LCM) 함수
+  return a*b // math.gcd(a,b)
+
+a=21
+b=14
+print(math.gcd(21,14)) #최대공약수
+print(lcm(a,b)) #최소공배수
